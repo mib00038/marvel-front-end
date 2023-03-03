@@ -26,7 +26,7 @@ const FilterCharacter = () => {
 	return (
 		<StyledStack direction="column" spacing={1}>
 			<StyledHeader>Filter by character</StyledHeader>
-			<Stack direction="row" spacing={1} sx={{paddingLeft: "0.25rem"}}>
+			<StyledChipListStack direction="row" >
 				{results?.map((character) => {
 					const isFiltered = character.id === characterId;
 					const clickable = !isFiltered;
@@ -43,10 +43,16 @@ const FilterCharacter = () => {
 						/>
 					)
 				})}
-			</Stack>
+			</StyledChipListStack>
 		</StyledStack>
 	)
 }
+
+const StyledChipListStack = styled(Stack)(({theme}) => ({
+	paddingLeft: "0.25rem",
+	paddingRight: "0.25rem",
+	flexWrap: "wrap",
+}));
 
 const StyledHeader = styled("h3")(({theme}) => ({
 	color: theme.palette["neutral70"].main,
@@ -57,20 +63,28 @@ const StyledHeader = styled("h3")(({theme}) => ({
 const StyledStack = styled(Stack)(({theme}) => ({
 	width: "100%",
 	backgroundColor: theme.palette["neutral30"].main,
+	borderRadius: "1rem",
 	padding: "1.5rem 1.5rem 1.5rem 0.5rem",
-	borderRadius: "1rem"
+	[theme.breakpoints.down("md")]: {
+		paddingTop: "1rem",
+		paddingBottom: "1rem",
+	}
 }));
 
-const StyledChip =  styled(Chip, withStyledPropOption('isFiltered'))<{isFiltered: boolean}>(({theme, isFiltered}) => ({
-	fontSize: "1.125rem",
+const StyledChip =  styled(Chip, withStyledPropOption('isFiltered'))<{isFiltered: boolean}>
+	(({theme, isFiltered}) => ({
 	fontFamily: "Roboto, san-serif",
 	color: theme.palette["white"].main,
 	backgroundColor: theme.palette["neutral30"].main,
 	borderColor: "transparent",
 	...(isFiltered && {
-		backgroundColor: theme.palette["background"],
+		backgroundColor: theme.palette["neutral10"].main,
 		borderColor: "initial",
-	})
+	}),
+	fontSize: "1.125rem",
+	[theme.breakpoints.down("md")]: {
+		fontSize: "1rem"
+	}
 }));
 
 export default FilterCharacter;

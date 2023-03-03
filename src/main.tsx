@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import { store } from './app/store';
 import {StyledEngineProvider} from "@mui/material/styles";
-import ReduxProvider from "./components/ReduxProvider";
+import {Provider} from "react-redux";
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <StyledEngineProvider injectFirst>
-      <ReduxProvider store={store}>
+      <Provider store={store}>
         <App />
-      </ReduxProvider>
+      </Provider>
     </StyledEngineProvider>
   </React.StrictMode>,
 )
