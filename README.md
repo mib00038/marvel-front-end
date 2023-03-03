@@ -1,7 +1,7 @@
 # Marvel Comic Book Reading List
 
-## Welcome
-Welcome to our front end technical test. Our challenge is for you to build a Marvel Comic Book Reading List. We respect your time and therefore request you don't spend too much time on it, there are two required user stories and three bonus user stories. It's important to note that the bonus user stories are not compulsory and will not carry additional weighting.
+## Page
+Page to our front end technical test. Our challenge is for you to build a Marvel Comic Book Reading List. We respect your time and therefore request you don't spend too much time on it, there are two required user stories and three bonus user stories. It's important to note that the bonus user stories are not compulsory and will not carry additional weighting.
 
 ---
 

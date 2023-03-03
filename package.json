@@ -18,9 +18,15 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@fontsource/roboto-condensed": "^4.5.9",
     "@mui/material": "^5.11.9",
+    "@reduxjs/toolkit": "^1.9.3",
+    "@types/md5": "^2.3.2",
+    "lodash": "^4.17.21",
+    "md5": "^2.3.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
@@ -40,6 +46,7 @@
     "jsdom": "^21.1.0",
     "typescript": "^4.9.3",
     "vite": "^4.1.0",
+    "vite-plugin-svgr": "^2.4.0",
     "vitest": "^0.28.5"
   }
 }
