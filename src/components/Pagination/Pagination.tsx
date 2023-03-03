@@ -14,7 +14,7 @@ const Pagination = ({totalComics}) => {
 	const handlePrevButtonOnClick = () => dispatch(pageSliceActions.decrement());
 
 	return (
-		<Box sx={{width: "100%", display: "flex", justifyContent: "center", padding: "3rem 0"}}>
+		<Box sx={{width: "100%", display: "flex", justifyContent: "center", padding: "3rem 0 4rem 0"}}>
 			<MarvelIconButton
 				isNav
 				startIcon={<SvgIcon color="inherit" component={ArrowLeft} inheritViewBox />}

@@ -8,6 +8,7 @@ import {isEmpty} from "lodash";
 import imageNotFoundUrl from "../../assets/image-not-found.png";
 import {RootState, useTypedSelector} from "../../app/store";
 import withStyledPropOption from "../../theme/utils/withStyledPropOption";
+
 const ComicImage = ({comic}) => {
 	const dispatch = useDispatch()
 	const handleAddButtonOnClick = () => dispatch(readingListSliceActions.addComic(comic))
