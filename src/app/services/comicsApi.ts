@@ -9,8 +9,6 @@ const comicsApi = baseApi
 		endpoints: (builder: any) => ({
 			comics: builder.query({
 				query: ({page, characterId}) => {
-
-					console.log({page, characterId})
 					const ts = Math.floor(Date.now() / 1000);
 					const apikey = import.meta.env.VITE_MARVEL_PUBLIC_KEY;
 					const privateKey = import.meta.env.VITE_MARVEl_PRIVATE_KEY;
@@ -18,13 +16,10 @@ const comicsApi = baseApi
 
 					return {
 						url: `characters/${characterId}/comics`,
-						params: {offset: page.value * 4, limit:4, ts, apikey, hash}
+						params: {offset: page.value * 4, limit: 4, ts, apikey, hash}
 					}
 				},
-				providesTags: ({data: {results}}) => {
-					console.log({results})
-					return results ? results.map(({id}) => ({type: Comics, id})) : [Comics]
-				}
+				providesTags: ({data: {results}}) => results ? results.map(({id}) => ({type: Comics, id})) : [Comics]
 			}),
 		}),
 		overrideExisting: false,

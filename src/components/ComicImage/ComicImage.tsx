@@ -2,17 +2,16 @@ import React, {useState} from "react";
 import MarvelIconButton from "../MarvelIconButton/MarvelIconButton";
 import {Fade, Grow, styled, SvgIcon} from "@mui/material";
 import { ReactComponent as Plus } from "../../assets/plus.svg"
-import {useDispatch} from "react-redux";
 import {readingListSliceActions} from "../../app/slices/readingListSlice";
 import {isEmpty} from "lodash";
 import imageNotFoundUrl from "../../assets/image-not-found.png";
-import {RootState, useTypedSelector} from "../../app/store";
+import {RootState, useAppDispatch, useAppSelector} from "../../app/store";
 import withStyledPropOption from "../../theme/utils/withStyledPropOption";
 
 const ComicImage = ({comic}) => {
-	const dispatch = useDispatch()
+	const dispatch = useAppDispatch()
 	const handleAddButtonOnClick = () => dispatch(readingListSliceActions.addComic(comic))
-	const comics = useTypedSelector((state: RootState) => state.readingList.comics);
+	const comics = useAppSelector((state: RootState) => state.readingList.comics);
 	const isReadingComic = comics?.findIndex((item) => item.id === comic.id) !== -1
 	const imageUrl = !isEmpty(comic?.images)
 		? comic.images[0].path + "." + comic.images[0]["extension"]

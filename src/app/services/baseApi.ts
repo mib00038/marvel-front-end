@@ -1,14 +1,16 @@
-import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react'
+import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react';
+
+export const BASE_URL = 'https://gateway.marvel.com/v1/public/';
 
 // Create our baseQuery instance
 const baseQuery = fetchBaseQuery({
-	baseUrl: 'https://gateway.marvel.com/v1/public/',
-})
+	baseUrl: BASE_URL,
+});
 
-const baseQueryWithRetry = retry(baseQuery, { maxRetries: 5 })
+const baseQueryWithRetry = retry(baseQuery, { maxRetries: 5 });
 
 export const baseApi = createApi({
 	reducerPath: 'baseApi',
 	baseQuery: baseQueryWithRetry,
 	endpoints: () => ({}),
-})
+});

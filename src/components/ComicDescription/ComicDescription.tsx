@@ -1,19 +1,23 @@
 import React from "react";
 import {styled, Typography} from "@mui/material";
 import format from "date-fns/format";
-import responsiveHOC from 'react-lines-ellipsis/lib/responsiveHOC'
-import HTMLEllipsis from 'react-lines-ellipsis/lib/html'
+import responsiveHOC from 'react-lines-ellipsis/lib/responsiveHOC';
+import HTMLEllipsis from 'react-lines-ellipsis/lib/html';
+
 const ResponsiveHTMLEllipsis = responsiveHOC()(HTMLEllipsis)
 
 const ComicDescription = ({comic}) => {
 	const published = comic["dates"].filter((date) => date.type === "onsaleDate")[0].date;
 	const formattedDate = format(new Date(published), 'MMMM do, yyyy');
 	const writers = comic["creators"].items.filter((item) => item.role === "writer").map((item => item.name)).join(", ");
+	const characters = comic["characters"].items.map(({name}) => name);
+
 	return (
 		<>
 			<Typography
 				variant="h6"
 				sx={{fontWeight: 700, lineHeight: "2.75rem", fontSize: "2rem"}}
+				data-testid='comic-title'
 			>
 				{comic.title}
 			</Typography>
@@ -47,6 +51,13 @@ const ComicDescription = ({comic}) => {
 				basedOn='letters'
 				unsafeHTML={comic.description}
 			/>
+			<ul style={{display: "none"}} data-testid='character-name-list'>
+				{characters.map(name => (
+					<li key={name} data-testid="character-name">
+						<span data-testid="name">{name}</span>
+					</li>
+				))}
+			</ul>
 		</>
 	)
 }
@@ -55,7 +66,7 @@ const StyledEllipsis = styled(ResponsiveHTMLEllipsis)(({theme}) => ({
 	fontWeight: 400,
 	fontSize: "0.875rem",
 	fontFamily: "Roboto, sans-serif",
-	color: theme.palette["neutral70"].main
+	color: theme.palette["neutral70"]
 }));
 
 export default ComicDescription;

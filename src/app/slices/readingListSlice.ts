@@ -8,7 +8,7 @@ export interface ReadingListState {
 const initialState: ReadingListState = { comics: [], length: 0 }
 
 const readingListSlice = createSlice({
-	name: 'page',
+	name: 'readingList',
 	initialState,
 	reducers: {
 		addComic: (draft: Draft<ReadingListState>, action) => {

@@ -1,10 +1,11 @@
-import {Link, styled, SvgIcon, Typography, useMediaQuery} from "@mui/material";
+import {Link, styled, SvgIcon, Typography, useMediaQuery, useTheme} from "@mui/material";
 import {ReactComponent as Bookmark} from "../../assets/bookmark.svg";
-import {RootState, useTypedSelector} from "../../app/store";
+import {RootState, useAppSelector} from "../../app/store";
 
 const Header = ({readingListOnClick}) => {
-	const mdDown = useMediaQuery((theme) => theme.breakpoints.down('md'));
-	const comics = useTypedSelector((state: RootState) => state.readingList.comics);
+	const theme = useTheme();
+	const mdDown = useMediaQuery(theme.breakpoints.down('md'));
+	const comics = useAppSelector((state: RootState) => state.readingList.comics);
 	const count = comics.length;
 	const readingListText = mdDown ? `(${count})` : `Reading List (${count})`;
 
@@ -18,6 +19,7 @@ const Header = ({readingListOnClick}) => {
 				underline='hover'
 				sx={{display: 'flex', justifyContent: 'space-between'}}
 				onClick={readingListOnClick}
+				data-testid="reading-list-element"
 			>
 				<SvgIcon component={Bookmark} />
 				<span style={{fontSize: '1.25rem', fontWeight: 400}}>{readingListText}</span>

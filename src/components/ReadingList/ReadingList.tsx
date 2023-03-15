@@ -1,17 +1,12 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {IconButton, List, ListItem, ListItemText, styled, Typography} from "@mui/material";
-import {RootState, useTypedSelector} from "../../app/store";
+import {RootState, useAppDispatch, useAppSelector} from "../../app/store";
 import {ReactComponent as DeleteIcon} from "../../assets/delete.svg";
-import {useDispatch} from "react-redux";
 import {readingListSliceActions} from "../../app/slices/readingListSlice";
 
 const ReadingList = () => {
-	const dispatch = useDispatch();
-	const comics = useTypedSelector((state: RootState) => state.readingList.comics);
-
-	useEffect(() => {
-		console.log({comics})
-	}, [comics])
+	const dispatch = useAppDispatch();
+	const comics = useAppSelector((state: RootState) => state.readingList.comics);
 
 	return (
 		<>

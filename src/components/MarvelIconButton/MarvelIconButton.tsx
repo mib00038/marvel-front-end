@@ -8,7 +8,7 @@ interface MarvelIconButtonProps extends IconButtonProps {
 
 const MarvelIconButton = ({label, ...props}: MarvelIconButtonProps) => {
 	return (
-		<StyledButton {...props}>
+		<StyledButton {...props} data-testid={`icon-button-${label}`}>
 			<Typography
 				variant="h6"
 				sx={{fontWeight: 700}}
@@ -32,15 +32,15 @@ const StyledButton = styled(
 	textTransform: "capitalize",
 	clipPath: "polygon(18% 0%, 100% 0, 100% 75%, 82% 100%, 0 100%, 0% 25%)",
 	...(isNav && {
-		backgroundColor: theme.palette["neutral30"].main,
+		backgroundColor: theme.palette["neutral30"],
 		"&:hover": {
-			backgroundColor: theme.palette["neutral70"].main,
+			backgroundColor: theme.palette["neutral70"],
 		},
 	}),
 	...(!isNav &&  {
-		backgroundColor: theme.palette["primary"].main,
+		backgroundColor: theme.palette["primary"]?.main,
 		"&:hover": {
-			backgroundColor: theme.palette["primary20"].main,
+			backgroundColor: theme.palette["primary20"],
 		},
 	})
 }));

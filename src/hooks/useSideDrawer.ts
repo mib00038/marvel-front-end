@@ -1,11 +1,10 @@
 import React, {useState} from "react";
 
 const useSideDrawer = () => {
-	const [open, setOpen] = useState(false)
-
+	const [open, setOpen] = useState(false);
 
 	const toggleDrawer =
-		( open: boolean) =>
+		(open: boolean) =>
 			(event: React.KeyboardEvent | React.MouseEvent) => {
 				if (
 					event.type === 'keydown' &&
@@ -18,7 +17,7 @@ const useSideDrawer = () => {
 				setOpen(open);
 			};
 
-	return { open, setOpen, toggleDrawer };
+	return {open, setOpen, toggleDrawer};
 }
 
 export default useSideDrawer;

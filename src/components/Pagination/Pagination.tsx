@@ -1,20 +1,19 @@
 import MarvelIconButton from "../MarvelIconButton/MarvelIconButton";
-import {SvgIcon} from "@mui/material";
+import {styled, SvgIcon} from "@mui/material";
 import Box from "@mui/material/Box";
-import { ReactComponent as ArrowLeft } from "../../assets/arrow-left.svg";
-import { ReactComponent as ArrowRight } from "../../assets/arrow-right.svg";
-import {useDispatch} from "react-redux";
+import {ReactComponent as ArrowLeft} from "../../assets/arrow-left.svg";
+import {ReactComponent as ArrowRight} from "../../assets/arrow-right.svg";
 import {pageSliceActions} from "../../app/slices/pageSlice";
-import {RootState, useTypedSelector} from "../../app/store";
+import {RootState, useAppDispatch, useAppSelector} from "../../app/store";
 
 const Pagination = ({totalComics}) => {
-	const dispatch = useDispatch()
-	const page = useTypedSelector((state: RootState) => state.page);
+	const dispatch = useAppDispatch()
+	const page = useAppSelector((state: RootState) => state.page);
 	const handleNextButtonOnClick = () => dispatch(pageSliceActions.increment());
 	const handlePrevButtonOnClick = () => dispatch(pageSliceActions.decrement());
 
 	return (
-		<Box sx={{width: "100%", display: "flex", justifyContent: "center", padding: "3rem 0 4rem 0"}}>
+		<StyledPaginationContainer>
 			<MarvelIconButton
 				isNav
 				startIcon={<SvgIcon color="inherit" component={ArrowLeft} inheritViewBox />}
@@ -30,8 +29,15 @@ const Pagination = ({totalComics}) => {
 				disabled={4 + page?.offset >= totalComics}
 				onClick={handleNextButtonOnClick}
 			/>
-		</Box>
+		</StyledPaginationContainer>
 	)
 }
+
+const StyledPaginationContainer = styled(Box)({
+	width: "100%",
+	display: "flex",
+	justifyContent: "center",
+	padding: "3rem 0 4rem 0"
+});
 
 export default Pagination;

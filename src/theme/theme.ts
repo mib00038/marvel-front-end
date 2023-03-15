@@ -28,21 +28,11 @@ export const theme = createTheme({
 		primary: {
 			main: colors.primary,
 		},
-		primary20: {
-			main: colors.primary20,
-		},
-		neutral10: {
-			main: colors.neutral10
-		},
-		neutral30: {
-			main: colors.neutral30
-		},
-		neutral70: {
-			main: colors.neutral70
-		},
-		white: {
-			main: colors.white
-		},
+		primary20: colors.primary20,
+		neutral10: colors.neutral10,
+		neutral30: colors.neutral30,
+		neutral70: colors.neutral70,
+		white: colors.white,
 		background: {
 			default: colors.background
 		},

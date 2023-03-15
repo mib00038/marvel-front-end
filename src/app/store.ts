@@ -3,7 +3,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import { baseApi } from './services/baseApi'
 import rootReducer from "./slices";
 
-export const createStore = (
+export const setupStore = (
 	options?: ConfigureStoreOptions['preloadedState'] | undefined
 ) =>
 	configureStore({
@@ -13,9 +13,9 @@ export const createStore = (
 		...options,
 	})
 
-export const store = createStore()
-
-export type AppDispatch = typeof store.dispatch
+export const store = setupStore()
+export type RootState = ReturnType<typeof rootReducer>
+export type AppStore = ReturnType<typeof setupStore>
+export type AppDispatch = AppStore['dispatch']
 export const useAppDispatch: () => AppDispatch = useDispatch
-export type RootState = ReturnType<typeof store.getState>
-export const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
